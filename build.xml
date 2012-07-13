@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<project name="build" basedir="." default="do.archive">
+	<!-- dynamic values for build -->
+	<tstamp prefix="start"/>
+	<property name="project.name" value="PasteBin" />
+	
+	<!-- Init -->
+	<target name="init" description="Init">
+		<!-- Version -->
+		<input addproperty="version" message="PasteBin Version" />
+	</target>
+	
+	<target name="do.archive" depends="init">
+		<mkdir dir="temp/PasteBin" />
+		<copy todir="temp/PasteBin">
+			<fileset dir=".">
+		      	<exclude name="builds/**"/>
+				<exclude name="build.xml"/>
+				<exclude name="settings.xml"/>
+				<exclude name=".DS_Store"/>
+				<exclude name=".project"/>
+				<exclude name=".settings/**"/>
+				<exclude name="temp/**"/>
+		    </fileset>
+		</copy>
+		
+		<zip destfile="builds/PasteBin_${version}.zip">
+			<fileset dir="temp/">
+				<exclude name=".DS_Store"/>
+				<exclude name=".project"/>
+			</fileset>
+		</zip>
+		
+		<delete dir="temp" />
+	</target>
+
+</project>

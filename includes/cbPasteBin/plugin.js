@@ -7,7 +7,7 @@ openRemoteModal() is part of ContentBox js
 	var a= {
 		exec:function(editor){
 			// Open the selector widget dialog.
-			openRemoteModal( getModuleURL('PasteBin', 'Home.entry'), {editorName: editor.name} );
+			openRemoteModal( getModuleURL('contentbox-pastebin', 'Home.entry'), {editorName: editor.name} );
 		}
 	},
 	//Section 2 : Create the button and add the functionality to it

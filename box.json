@@ -1,0 +1,37 @@
+{
+    "name":"ContentBox PasteBin Embed",
+    "shortDescription":"This module allows you to add PasteBin embedded snippets into your pages",
+    "location":"https://github.com/contentbox-modules/contentbox-pastebin/archive/master.zip",
+    "version":"2.0.0",
+    "slug":"contentbox-pastebin",
+    "author":"Ortus Solutions <info@ortussolutions.com>",
+    "homepage":"https://github.com/contentbox-modules/contentbox-pastebin",
+    "documentation":"https://github.com/contentbox-modules/contentbox-pastebin",
+    "repository":{
+        "type":"git",
+        "url":"https://github.com/contentbox-modules/contentbox-pastebin"
+    },
+    "bugs":"https://github.com/contentbox-modules/contentbox-pastebin/issues",
+    "type":"contentbox-modules",
+    "license":[
+        {
+            "type":"Apache2",
+            "url":"http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    ],
+    "contributors":[
+        
+    ],
+    "dependencies":{
+    },
+    "devDependencies":{
+        
+    },
+    "installPaths":{
+    },
+    "ignore":[
+        "**/.*",
+        "tests",
+        "screenshots"
+    ]
+}

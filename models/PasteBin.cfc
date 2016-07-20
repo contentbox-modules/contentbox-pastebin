@@ -1,18 +1,14 @@
 /**
-********************************************************************************
-Copyright 2009 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
-www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
-********************************************************************************
-
-Author 	 :	Luis Majano
-Description :
-
-PasteBin Interface
+* Copyright 2009 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
+* www.ortussolutions.com
+* @author Luis Majano
+* 
+* PasteBin Interface
 **/
 component accessors="true"{
 
 	// Compressor Settings
-	property name="settings" inject="coldbox:moduleSettings:PasteBin";
+	property name="settings" inject="coldbox:moduleSettings:contentbox-pastebin";
 
 	// Constructor
 	function init(){

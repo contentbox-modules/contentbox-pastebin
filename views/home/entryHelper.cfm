@@ -10,12 +10,14 @@ function embedPasteBin(){
 		async : false,
 		success : function(data){
 			embedCode = data;
+
+			console.log( data );
+			sendEditorText( embedCode );
 		}
 	});
-	sendEditorText( embedCode );
 }
 function sendEditorText(text){
-	$("###rc.editorName#").ckeditorGet().insertHtml( text );
+	insertEditorContent( '#rc.editorName#', text );
 	closeRemoteModal();
 }
 </script>

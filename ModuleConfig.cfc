@@ -1,18 +1,3 @@
-/**
-********************************************************************************
-Copyright 2009 ColdBox Framework by Luis Majano and Ortus Solutions, Corp
-www.coldboxframework.com | www.luismajano.com | www.ortussolutions.com
-********************************************************************************
-
-Author 	 :	Luis Majano
-Description :
-
-This module allows you to add pastebin embedded snippets into your pages. You will need to fill out your
-developer API key from pastebin for this module to work.
-
-For more information visit: http://pastebin.com/api
-
-**/
 component {
 
 	// Module Properties
@@ -20,13 +5,13 @@ component {
 	this.author 			= "Ortus Solutions, Corp";
 	this.webURL 			= "http://www.ortussolutions.com";
 	this.description 		= "Helps you embedd code into your pages via PateBin";
-	this.version			= "1.0";
+	this.version			= "2.0.0";
 	// If true, looks for views in the parent first, if not found, then in the module. Else vice-versa
 	this.viewParentLookup 	= true;
 	// If true, looks for layouts in the parent first, if not found, then in module. Else vice-versa
 	this.layoutParentLookup = true;
 	// Module Entry Point
-	this.entryPoint			= "pastebin";
+	this.entryPoint			= "contentbox-pastebin";
 
 	function configure(){
 
@@ -50,7 +35,7 @@ component {
 		];
 
 		// objects
-		binder.map("PasteBin@PasteBin").to("#moduleMapping#.model.PasteBin");
+		binder.map("PasteBin@PasteBin").to("#moduleMapping#.models.PasteBin");
 		binder.map("fileUtils@pasteBin").to("coldbox.system.core.util.FileUtils");
 	}
 
@@ -82,14 +67,14 @@ component {
 		// Let's add ourselves to the main menu in the Modules section
 		var menuService = controller.getWireBox().getInstance("AdminMenuService@cb");
 		// Add Menu Contribution
-		menuService.addSubMenu(topMenu=menuService.MODULES,name="PasteBin",label="PasteBin",href="#menuService.buildModuleLink('PasteBin','home.settings')#");
+		menuService.addSubMenu(topMenu=menuService.MODULES,name="PasteBin",label="PasteBin",href="#menuService.buildModuleLink('contentbox-pastebin','home.settings')#");
 		// Override settings?
 		var settingService = controller.getWireBox().getInstance("SettingService@cb");
 		var args = {name="cbox-pastebin"};
 		var setting = settingService.findWhere(criteria=args);
 		if( !isNull(setting) ){
 			// override settings from contentbox custom setting
-			controller.getSetting("modules").pasteBin.settings = deserializeJSON( setting.getvalue() );
+			controller.getSetting("modules")[ "contentbox-pastebin" ].settings = deserializeJSON( setting.getvalue() );
 		}
 	}
 
@@ -108,9 +93,9 @@ component {
 		}
 
 		// Install the ckeditor plugin
-		var ckeditorPluginsPath = controller.getSetting("modules")["contentbox-admin"].path & "/includes/ckeditor/plugins/cbPasteBin";
+		var ckeditorPluginsPath = controller.getSetting( "modules" )[ "contentbox-admin" ].path & "/modules/contentbox-ckeditor/includes/ckeditor/plugins/cbPasteBin";
 		var fileUtils = controller.getWireBox().getInstance("fileUtils@pasteBin");
-		var pluginPath = controller.getSetting("modules")["pasteBin"].path & "/includes/cbPasteBin";
+		var pluginPath = controller.getSetting("modules")[ "contentbox-pastebin" ].path & "/includes/cbPasteBin";
 		fileUtils.directoryCopy(source=pluginPath, destination=ckeditorPluginsPath);
 	}
 
@@ -135,9 +120,9 @@ component {
 			settingService.delete( setting );
 		}
 		// Uninstall the ckeditor plugin
-		var ckeditorPluginsPath = controller.getSetting("modules")["contentbox-admin"].path & "/includes/ckeditor/plugins/cbPasteBin";
+		var ckeditorPluginsPath = controller.getSetting( "modules" )[ "contentbox-admin" ].path & "/modules/contentbox-ckeditor/includes/ckeditor/plugins/cbPasteBin";
 		var fileUtils = controller.getWireBox().getInstance("fileUtils@pasteBin");
-		var pluginPath = controller.getSetting("modules")["pasteBin"].path & "/includes/cbPasteBin";
+		var pluginPath = controller.getSetting("modules")["contentbox-pastebin"].path & "/includes/cbPasteBin";
 		fileUtils.directoryRemove(path=ckeditorPluginsPath, recurse=true);
 	}
 }

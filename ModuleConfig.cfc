@@ -29,14 +29,8 @@ component {
 			{pattern="/:handler/:action?"}
 		];
 
-		// Interceptors
-		interceptors = [
-
-		];
-
 		// objects
 		binder.map("PasteBin@PasteBin").to("#moduleMapping#.models.PasteBin");
-		binder.map("fileUtils@pasteBin").to("coldbox.system.core.util.FileUtils");
 	}
 
 	/**
@@ -94,9 +88,8 @@ component {
 
 		// Install the ckeditor plugin
 		var ckeditorPluginsPath = controller.getSetting( "modules" )[ "contentbox-admin" ].path & "/modules/contentbox-ckeditor/includes/ckeditor/plugins/cbPasteBin";
-		var fileUtils = controller.getWireBox().getInstance("fileUtils@pasteBin");
-		var pluginPath = controller.getSetting("modules")[ "contentbox-pastebin" ].path & "/includes/cbPasteBin";
-		fileUtils.directoryCopy(source=pluginPath, destination=ckeditorPluginsPath);
+		var pluginPath = moduleMapping & "/includes/cbPasteBin";
+		directoryCopy(source=pluginPath, destination=ckeditorPluginsPath);
 	}
 
 	/**
@@ -121,8 +114,7 @@ component {
 		}
 		// Uninstall the ckeditor plugin
 		var ckeditorPluginsPath = controller.getSetting( "modules" )[ "contentbox-admin" ].path & "/modules/contentbox-ckeditor/includes/ckeditor/plugins/cbPasteBin";
-		var fileUtils = controller.getWireBox().getInstance("fileUtils@pasteBin");
-		var pluginPath = controller.getSetting("modules")["contentbox-pastebin"].path & "/includes/cbPasteBin";
-		fileUtils.directoryRemove(path=ckeditorPluginsPath, recurse=true);
+		var pluginPath = moduleMapping & "/includes/cbPasteBin";
+		directoryDelete(path=ckeditorPluginsPath, recurse=true);
 	}
 }

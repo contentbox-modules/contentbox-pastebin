@@ -20,14 +20,12 @@
         }
     ],
     "contributors":[
-        
+        "Francesco Pepe"
     ],
-    "dependencies":{
-    },
-    "devDependencies":{
-        
-    },
-    "installPaths":{
+    "scripts":{
+        "postVersion":"package set location='contentbox-modules/contentbox-pastebin#v`package version`'",
+        "onRelease":"publish",
+        "postPublish":"!git push && !git push --tags"
     },
     "ignore":[
         "**/.*",

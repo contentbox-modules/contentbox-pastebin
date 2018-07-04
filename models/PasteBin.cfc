@@ -19,7 +19,7 @@ component accessors="true"{
 	* Sends a pastebin request
 	*/
 	function send(required string code, string format="", string title=""){
-		var pastebinURL = "http://pastebin.com/api/api_post.php";
+		var pastebinURL = "https://pastebin.com/api/api_post.php";
 
 		var pastebinService = new HTTP(url=pastebinURL, method="post", resolveURL=true, timeout="10");
 		pastebinService.addParam(type="formfield", name="api_dev_key", value=settings.pastebin_api_key);
@@ -34,8 +34,8 @@ component accessors="true"{
 		}
 
 		var results = pastebinService.send().getPrefix();
-		var embedCode = replacenocase( results.filecontent, "http://pastebin.com/", "");
-		return '<iframe src="http://pastebin.com/embed_iframe.php?i=#embedCode#" style="border:none;width:100%;min-height:200px"></iframe>';
+		var embedCode = replacenocase( results.filecontent, "https://pastebin.com/", "");
+		return '<iframe src="https://pastebin.com/embed_iframe.php?i=#embedCode#" style="border:none;width:100%;"></iframe>';
 	}
 
 }
